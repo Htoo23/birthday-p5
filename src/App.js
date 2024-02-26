@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import sketch from './sketch';
+import p5 from 'p5';
 
-function App() {
+const TEXT = 'Happy Birthday Cham Myae May Thaw ❤️';
+
+const App = () => {
+  const canvasRef = React.useRef(null)
+
+  React.useEffect(() => {
+    const canvasDivElement = canvasRef.current;
+
+
+    new p5(sketch(canvasDivElement, TEXT), canvasDivElement);
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div className="main">
+      <div ref={canvasRef} />
+    </div >
+  )
 }
 
 export default App;
